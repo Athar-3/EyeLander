@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EYELANDER</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2"  />
+
+  </head>
+  <body class="container" id="bodycontainer">
+    <h1>  EYELANDER</h1>
+    <h3 id="hello"></h3>
+    <div id="playerName">
+      <p class="name">ENTER YOUR NAME</p>
+      <input type="text" id="inputName" />&nbsp;
+      <div>Play as Guest <input type="checkbox" /></div>
+      &nbsp;
+      <div>Mute Music <input type="checkbox" id="mute" /></div>
+      &nbsp;
+      <button class="start" onclick="launchGame()">Launch Game</button>
+    </div>
+    <div id="gameContainer" class="lineUp">
+      <div id="scoreWrapper">
+        <div class="score" id="score"></div>
+        <div class="score" id="level"></div>
+      </div>
+      <div class="Instruction" id="inst">
+        <h2>Instructions</h2>
+        <ul>
+          <li>
+            The objective of Eyelander is to work on your field of vision by
+            accurately identifying the order of the numbers flashed.
+          </li>
+          <li>
+            A number of boxes with numbers inside will pop up shortly after the
+            you click the start button.
+          </li>
+          <li>
+            The goal is to remember all of the numbers that appear on the screen
+            and select them in ascending numerical order. Boxes will increase
+            with level.
+          </li>
+          <li>
+            These numbers will disappear after a second, so you have to be vigilant!
+            You're then left with blank squares.
+          </li>
+          <li>
+            The goal is to remember what
+            order the numbers appeared on the screen and select them in
+            ascending order (from lowest to highest.)
+            Score increments equals to number of boxes.
+          </li>
+        </ul>
+      </div>
+      <div id="global" class="box-wrapper"></div>
+      <div class="buttonwrapper" id="buttonwrapper">
+        <button onclick="generateBoxes();showDiv()" class="start" id="startbtn">
+          Start
+        </button>
+        <div id="message"></div>
+        <br />
+        <button onclick="submit()" class="start" id="submitbtn">Submit</button> <br />
+      </div>
+    </div>
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  </body>
+</html>

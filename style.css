@@ -1,0 +1,250 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+#hello {
+  text-align: center;
+}
+body {
+  background: radial-gradient(
+    circle,
+    rgba(200, 230, 240, 1) 0%,
+    rgba(200, 230, 240, 1) 100%
+  );
+}
+.lineUp {
+  animation: 10s anim-lineUp ease-out;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+h1 {
+  display: flex;
+  background-clip: text;
+  background: linear-gradient(to right, #095fab 10%, #25abe8 50%, #57d75b 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  justify-content: center;
+  margin: auto;
+  font-size: 300%;
+  font-weight: 900;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 3s linear 8;
+  /* animation will run only 8 times */
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.Instruction {
+  width: 450px;
+  font-size: 20px;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  border: 2px dotted #1c6ea4;
+}
+
+#gameContainer {
+  display: none;
+  width: auto;
+}
+
+#playerName {
+  border: 2px dotted #1c6ea4;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  padding: 4px;
+  width: 60vw;
+  height: 280px;
+}
+
+.name {
+  font-size: 25px;
+}
+
+#inputName {
+  width: 200px;
+  height: 25px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#scoreWrapper {
+  display: none;
+  width: 50%;
+  margin: 3rem auto;
+  justify-content: center;
+}
+
+.score {
+  padding: 20px;
+  border: 2px solid black;
+  margin: auto 50px auto 50px;
+}
+
+.box-wrapper {
+  width: 40%;
+  height: auto;
+  margin: 20px auto;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box {
+  border: 0;
+  margin: 5px;
+  border-radius: 5px;
+  font-family: Helvetica;
+  padding: 15px 25px;
+  font-size: 3em;
+  width: 100px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  background-color: rgb(157, 220, 178);
+  height: 90px;
+  box-shadow: 2px 3px 4px 0px darkblue;
+}
+/* if no of boxes goes beyond 15, 
+this class will be applied to all boxes to make them small */
+.box2 {
+  border: 0;
+  margin: 5px;
+  border-radius: 5px;
+  font-family: Helvetica;
+  padding: 15px 25px;
+  font-size: 1.8em;
+  width: 60px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  background-color: rgb(157, 220, 178);
+  height: 60px;
+  box-shadow: 2px 3px 4px 0px darkblue;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+.start {
+  display: block;
+  justify-content: center;
+  align-content: center;
+  margin: 1px auto 1px auto;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-family: Helvetica;
+  padding: 15px 25px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #2b33cb;
+  box-shadow: 0 9px #999;
+}
+.box:hover:enabled,
+.start:hover {
+  background-color: #3e8e41;
+}
+
+.box:active,
+.start:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666123;
+  transform: translateY(4px);
+}
+
+button {
+  width: 180px;
+}
+
+.buttonwrapper {
+  display: block;
+}
+
+#message {
+  font-size: 30px;
+  color: #c52044;
+  animation: blinker 1s linear infinite;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .box-wrapper {
+    height: auto;
+    margin: auto;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .Instruction {
+    width: 330px;
+    font-size: 15px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  #scoreWrapper {
+    display: flex;
+    width: 50%;
+    margin: 1px auto;
+    justify-content: center;
+  }
+  .score {
+    padding: 7px;
+    border: 2px solid black;
+    margin: auto 50px auto 50px;
+  }
+  h1 {
+    font-size: 190%;
+  }
+}
+
+
