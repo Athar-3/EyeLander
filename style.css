@@ -3,7 +3,12 @@
   padding: 0%;
   /* outline: 1px solid red; */
 }
-
+@font-face {
+  font-family: 'Lastlap Personal Use Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Lastlap Personal Use Regular'), url('LastlapPersonalUse-PKDrg.woff') format('woff');
+  }
 #hello {
   text-align: center;
 }
@@ -45,7 +50,7 @@ h1 {
   margin: auto;
   font-size: 300%;
   font-weight: 400;
-  font-family: "Lastlap Personal Use", sans-serif;
+  font-family: "Lastlap Personal Use Regular", sans-serif;
   text-transform: uppercase;
   color: #fff;
   -webkit-background-clip: text;
