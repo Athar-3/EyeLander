@@ -9,8 +9,10 @@ const boxclickSound = new Audio("boxclick.mp3");
 const confettiSound = new Audio("confetti.mp3");
 const wrongAnssound = new Audio("wrongAns.mp3");
 const buttonwrapper = document.getElementById("bodycontainer");
+const InstConatianer = document.getElementById("Inst-Conatianer"); 
 
 function launchGame() {
+  instructions();
   document.getElementById("scoreWrapper").style.display = "none";
   document.getElementById("submitbtn").style.display = "none";
   document.getElementById("gameContainer").style.display = "block";
@@ -30,15 +32,66 @@ function launchGame() {
     document.getElementById("global").style.margin = "0px auto";
     document.getElementById("score").style.padding = "7px";
     document.getElementById("level").style.padding = "7px";
-
   } else {
     document.getElementById("global").style.width = "95%";
   }
 }
 
+
+const instructions = () => {
+ const instructions =
+  ["The objective of Eyelander is to work on your field of vision by accurately identifying the order of the numbers flashed.", 
+  "A number of boxes with numbers inside will pop up shortly after the you click the start button.",
+  "The goal is to remember all of the numbers that appear on the screen and select them in ascending numerical order.Boxes will increase with level." 
+,"These numbers will disappear after a second, so you have to be vigilant! You're then left with blank squares.",
+"The goal is to remember what order the numbers appeared on the screen and select them in ascending order (from lowest to highest.) Score increments equals to number of boxes."]
+
+const heading = document.createElement("h2");
+heading.innerHTML = "Instructions";
+heading.classList.add("InstHeading");
+InstConatianer.appendChild(heading);
+
+  const ul = document.createElement("ul");
+  document.body.appendChild(ul);
+ 
+  for (let i =0; i < 5; i++)
+  {
+      const li = document.createElement("li");  
+      li.innerHTML = instructions[i];
+      ul.appendChild(li);
+  }
+  InstConatianer.appendChild(ul);
+ 
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // funtions to genrate boxes-----------------------------------------
 function generateBoxes() {
   document.getElementById("buttonwrapper").style.display = "flex";
+  document.getElementById("scoreWrapper").style.display = "flex";
   removeAllChildNodes(containerElem);
   hideDiv();
   introMusic.pause();
@@ -51,23 +104,43 @@ function generateBoxes() {
     } else {
       boxElem.classList.add("box");
     }
-    boxElem.addEventListener("click", handleClick);
+
+setTimeout(() => {
+  boxElem.addEventListener("click", handleClick);
+}, 2000);
+
     containerElem.appendChild(boxElem);
   }
-  if (start.trim() === "Start") {
+  if (start.trim() === "START") {
     document.getElementById("submitbtn").style.display = "block";
-    document.getElementById("startbtn").innerHTML = "Next Level";
-    document.getElementById("score").innerHTML = "Score:" + score;
-    document.getElementById("level").innerHTML = "Level:" + level;
+    document.getElementById("startbtn").innerHTML = "NEXT LEVEL";
+    document.getElementById("score").innerHTML =  score;
+    document.getElementById("level").innerHTML =  level;
   }
   generateRandomNumbers(boxes);
-  if (start === "Next Level") {
-    document.getElementById("level").innerHTML = "Level:" + ++level;
+
+    if (start==="RETRY" || start === "NEXT LEVEL") {
+    document.getElementById("level").innerHTML = level++;
+    document.getElementById("startbtn").disabled = true;
+    document.getElementById("message").classList.remove("message")
   }
-  if(boxes>=15){
+
+  if(boxes>=12){
     gameOver();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function confettiblast() {
   confetti({
@@ -126,6 +199,7 @@ function timer() {
 }
 
 function submit() {
+ 
   const sortedArray = arr.slice().sort((a, b) => parseInt(a) - parseInt(b));
   if (sortedArray.length === boxes) {
     const check = JSON.stringify(arr) == JSON.stringify(sortedArray);
@@ -133,17 +207,25 @@ function submit() {
       confettiSound.play();
       confettiblast();
       document.getElementById("message").innerHTML = "Correct Answer";
+      document.getElementById("message").classList.add("message")
       document.getElementById("message").style.color = "green";
-      document.getElementById("startbtn").innerHTML = "Next Level";
+      document.getElementById("startbtn").innerHTML = "NEXT LEVEL";
       score += boxes;
       boxes++;
-      document.getElementById("score").innerHTML = "Score:" + score;
-      document.getElementById("level").innerHTML = "Level:" + level;
+      document.getElementById("score").innerHTML =  score;
+      document.getElementById("level").innerHTML =  level;
+      document.getElementById("startbtn").disabled = false;
     } else {
-      document.getElementById("message").innerHTML = "Wrong Answer";
       wrongAnssound.play();
+      document.getElementById("message").innerHTML = "Wrong Answer";
+      document.getElementById("message").classList.add("message")
       document.getElementById("message").style.color = "red";
-      document.getElementById("startbtn").innerHTML = "Retry";
+      document.getElementById("startbtn").innerHTML = "RETRY";
+      document.getElementById("startbtn").disabled = false;
+      // setTimeout(() => {
+      //   document.getElementById("message").classList.remove("message")
+      // }, 50000);
+      
     }
   }
 }
@@ -166,8 +248,8 @@ function removeAllChildNodes(parent) {
 }
 
 function showDiv() {
-  document.getElementById("scoreWrapper").style.display = "flex";
-  document.getElementById("inst").style.display = "none";
+ 
+  document.getElementById("Inst-Conatianer").style.display = "none";
 }
 
 function gameOver() {
@@ -182,7 +264,7 @@ function gameOver() {
     "Your score is: " +
     score +
     "<br>";
-  document.getElementById("score").style.display = "none";
+  document.getElementById("scoreWrapper").style.display = "none";
   document.getElementById("level").style.display = "none";
   document.getElementById("startbtn").style.display = "none";
   document.getElementById("submitbtn").style.display = "none";
@@ -191,8 +273,8 @@ function gameOver() {
 
 function makebtn() {
   const restartBtn = document.createElement("button");
-  restartBtn.innerHTML = "Restart";
-  restartBtn.classList.add("start");
+  restartBtn.innerHTML = "RESTART";
+  restartBtn.classList.add("start-btn");
   restartBtn.setAttribute("id", "restart");
   restartBtn.addEventListener("click", restart);
   buttonwrapper.appendChild(restartBtn);

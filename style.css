@@ -1,6 +1,7 @@
 * {
   margin: 0%;
   padding: 0%;
+  /* outline: 1px solid red; */
 }
 
 #hello {
@@ -9,8 +10,8 @@
 body {
   background: radial-gradient(
     circle,
-    rgba(200, 230, 240, 1) 0%,
-    rgba(200, 230, 240, 1) 100%
+    rgb(232, 241, 244) 0%,
+    rgb(217, 225, 228) 100%
   );
 }
 .lineUp {
@@ -43,8 +44,8 @@ h1 {
   justify-content: center;
   margin: auto;
   font-size: 300%;
-  font-weight: 900;
-  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-family: "Lastlap Personal Use", sans-serif;
   text-transform: uppercase;
   color: #fff;
   -webkit-background-clip: text;
@@ -59,12 +60,21 @@ h1 {
   }
 }
 .Instruction {
-  width: 450px;
-  font-size: 20px;
+  padding: 10px;
+  background-color: #dbecf3;
+  font-size: 17px;
+  width: 550px;
   justify-content: center;
+  text-align: justify;
   margin: auto;
+  font-family: "Comic Sans MS", sans-serif;
+}
+li {
+  margin-bottom: 7px;
+}
+.InstHeading {
   text-align: center;
-  border: 2px dotted #1c6ea4;
+  font-size: 25px;
 }
 
 #gameContainer {
@@ -73,7 +83,6 @@ h1 {
 }
 
 #playerName {
-  border: 2px dotted #1c6ea4;
   display: flex;
   justify-content: center;
   place-items: center;
@@ -85,27 +94,39 @@ h1 {
 }
 
 .name {
-  font-size: 25px;
+  font-size: 17px;
+}
+
+.checkbox {
+  display: flex;
+  vertical-align: middle;
 }
 
 #inputName {
-  width: 200px;
-  height: 25px;
+  width: 170px;
+  height: 22px;
   font-size: 20px;
   text-align: center;
 }
 
-#scoreWrapper {
-  display: none;
-  width: 50%;
-  margin: 3rem auto;
-  justify-content: center;
+fieldset {
+  border: 1px solid rgb(16, 12, 12);
+  color: rgb(9, 7, 7);
+  text-align: center;
+  width: 100px;
+  font-size: 50px;
+  font-family: "Roboto";
+}
+legend {
+  padding: 0 5px;
+  font-size: 15px;
 }
 
-.score {
-  padding: 20px;
-  border: 2px solid black;
-  margin: auto 50px auto 50px;
+#scoreWrapper {
+  display: none;
+  width: 75%;
+  margin: auto;
+  justify-content: space-evenly;
 }
 
 .box-wrapper {
@@ -159,66 +180,107 @@ this class will be applied to all boxes to make them small */
   display: flex;
 }
 
-.start {
-  display: block;
-  justify-content: center;
-  align-content: center;
-  margin: 1px auto 1px auto;
-  border: 1px solid white;
-  border-radius: 5px;
-  font-family: Helvetica;
-  padding: 15px 25px;
-  font-size: 1.5em;
-  font-weight: bold;
+
+.start-btn {
+  font-family: "Press Start 2P";
   text-align: center;
+  display: block;
+  margin: auto;
+  padding: 10px 10px 10px 10px;
+  background-color: lightgray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: gray;
+  border-radius: 7px;
+  box-shadow: 0 0.1em gray;
   cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #2b33cb;
-  box-shadow: 0 9px #999;
+  font-size: 23px;
+  transition: 0.6s ease;
+
 }
+.start-btn:active {
+  box-shadow: none;
+  position: relative;
+  top: 0.2em;
+}
+.start-btn:hover{
+  transform: scale(1.1);
+  transition: 0.6s ease;
+}
+
+
+
 .box:hover:enabled,
 .start:hover {
-  background-color: #3e8e41;
+  transform: scale(1.1)
+
 }
 
 .box:active,
 .start:active {
-  background-color: #3e8e41;
+  transition: 1s ease-in-out;
+background: #4F95DA;
   box-shadow: 0 5px #666123;
   transform: translateY(4px);
 }
 
 button {
-  width: 180px;
+  width:180px;
+  height: 62px;
+ 
 }
 
 .buttonwrapper {
-  display: block;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  width: 370px;
 }
 
-#message {
+
+
+
+
+
+
+
+.message {
   font-size: 30px;
   color: #c52044;
-  animation: blinker 1s linear infinite;
-  justify-content: center;
+  animation:slide-right 1.5s;
+  /* animation: blinker 1s linear infinite;  */
   text-align: center;
   margin: auto;
+  margin-top: 10px;
 }
 
-@keyframes blinker {
-  50% {
-    opacity: 0;
+@keyframes slide-right {
+  from {
+    margin-left:-100%;
+    width: 10%;
+
+  }
+  to {
+    margin-left:45%;
+    width: 10%;
   }
 }
 
+
+/* @keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+} */
+
 @media only screen and (max-width: 450px) {
+  #scoreWrapper {
+    margin-bottom: 10px;
+  }
   .box-wrapper {
-    height: auto;
-    margin: auto;
     color: #fff;
     border-radius: 10px;
     display: flex;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -228,23 +290,38 @@ button {
   }
 
   .name {
-    font-size: 20px;
+    font-size: 17px;
   }
 
-  #scoreWrapper {
-    display: flex;
-    width: 50%;
-    margin: 1px auto;
-    justify-content: center;
-  }
-  .score {
-    padding: 7px;
-    border: 2px solid black;
-    margin: auto 50px auto 50px;
-  }
   h1 {
-    font-size: 190%;
+    font-size: 250%;
   }
+
+  .message {
+    font-size: 30px;
+    color: #c52044;
+    animation:slide-right 1.5s;
+    /* animation: blinker 1s linear infinite;  */
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  @keyframes slide-right {
+    from {
+      margin-left:-100%;
+      width: 80%;
+  
+    }
+    to {
+      margin-left:25%;
+      width: 50%;
+    }
+  }
+  
+  
+  
+
+
+
 }
-
-
